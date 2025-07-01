@@ -1,0 +1,66 @@
+<div class="tabs">
+    <button class="tab active" data-tab="1">Tab 1</button>
+    <button class="tab" data-tab="2">Tab 2</button>
+    <button class="tab" data-tab="3">Tab 3</button>
+</div>
+<div class="tab-content" id="tab-1">Content for Tab 1</div>
+<div class="tab-content hidden" id="tab-2">Content for Tab 2</div>
+<div class="tab-content hidden" id="tab-3">Content for Tab 3</div>
+
+<style>
+    .hidden {
+        display: none;
+    }
+
+    .active {
+        font-weight: bold;
+    }
+
+    .tab:focus {
+        outline: 2px solid blue;
+    }
+</style>
+<script>
+
+    const tabs = document.querySelectorAll('.tab');
+    const contents = document.querySelectorAll('.tab-content');
+
+    //Add listeners to each tab button to switch content on click
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            tabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+
+            contents.forEach(c => c.classList.add('hidden'));
+            document.getElementById('tab-' + tab.dataset.tab).classList.remove('hidden');
+        });
+    });
+
+    const activeTab = document.querySelector('.tab.active');
+    let focusIndex = activeTab.dataset.tab - 1; //get the index of active tab
+
+    document.addEventListener('keydown', (event) => {
+        const key = event.key;
+        let newTab = null;
+        switch (key) {
+            case 'ArrowLeft':
+                focusIndex = (focusIndex - 1 + tabs.length) % tabs.length; // move index left
+                newTab = tabs[focusIndex];
+                newTab.focus();
+                break;
+            case 'ArrowRight':
+                focusIndex = (focusIndex + 1) % tabs.length; // move index right
+                newTab = tabs[focusIndex];
+                newTab.focus();
+                break
+            case 'Enter':
+                newTab = document.activeElement; //get focused element
+                newTab.click();
+                newTab.blur() //unfocus the button after click
+                break;
+            default:
+                break;
+        }
+
+    });
+</script>

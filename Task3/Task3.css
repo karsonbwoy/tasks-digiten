@@ -1,0 +1,159 @@
+:root {
+    --color-primary: #191530;
+    --color-secondary: #de1b76;
+    --color-text: #ffffff;
+    font-size: 1vw;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body,
+html {
+    color: var(--color-text);
+    @import url('https://fonts.cdnfonts.com/css/helvetica-neue-55');
+    font-family: 'Helvetica Neue', sans-serif;
+    background-color: var(--color-primary);
+}
+
+button {
+    background-color: var(--color-secondary);
+    color: var(--color-text);
+    height: 3rem;
+    border: none;
+    border-radius: 2px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #ff4081;
+}
+
+button:active {
+    background-color: #c51162;
+}
+
+button:focus {
+    outline: 3px solid var(--color-secondary);
+    outline-offset: 4px;
+}
+
+h1 {
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.25rem;
+}
+
+h2 {
+    font-size: 3.125rem;
+    letter-spacing: -1px;
+    line-height: 3.125rem;
+}
+
+p {
+    font-size: 1.125rem;
+    line-height: 1.625rem;
+}
+
+section {
+    margin-top: 100px;
+    margin-left: 14vw;
+    max-width: 34vw;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: space-between;
+    gap: 30px;
+    z-index: 1;
+
+}
+
+
+#quotation-marks {
+    height: 2.875rem;
+}
+
+#asi-logo {
+    height: 6rem;
+}
+
+
+#hand-and-coins {
+    height: 600px;
+    position: absolute;
+    top: 23px;
+    right: 0;
+    z-index: 0;
+}
+
+
+@media (max-width: 1080px) {
+
+    :root {
+        font-size: 3vw
+    }
+
+    section {
+        margin-left: 5vw;
+        max-width: 90vw;
+        gap: 50px;
+    }
+
+    h1 {
+        font-size: 1.2rem;
+    }
+
+    #hand-and-coins {
+        height: 60vw;
+        top: 0;
+        opacity: 0.8;
+    }
+}
+
+
+@media (max-width: 480px) {
+
+    :root {
+        font-size: 4vw;
+    }
+
+    section {
+        margin-left: 2vw;
+        max-width: 96vw;
+        display: block;
+    }
+
+    h1 {
+        font-size: 1.3rem;
+    }
+
+    #hand-and-coins {
+        height: 40vh;
+        top: 5vh;
+        opacity: 0.5;
+    }
+
+    #asi-logo {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    p {
+        float: left;
+    }
+
+    button {
+        float: right;
+    }
+
+    * {
+        margin-bottom: 30px;
+    }
+}
